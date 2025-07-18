@@ -125,6 +125,13 @@
       animation: sparkle 2s infinite ease-in-out;
       filter: drop-shadow(0 0 3px #fff);
     }
+
+    .badge-img {
+  width: 60px;
+  height: auto;
+  margin: 0 10px;
+  vertical-align: middle;
+}
   </style>
 </head>
 <body>
@@ -325,12 +332,12 @@
       const newResultText = document.getElementById('result-text');
       const newBadgeContainer = document.getElementById('badge-container');
 
-      newBadgeContainer.innerHTML = `
-        <div class="result-badge">
-          ${starSVG}
-          <span>${badges[resultKey]}</span>
-          ${starSVG}
-        </div>`;
+      badgeContainer.innerHTML = `
+  <div class="result-badge">
+    ${starSVG}
+    <img src="badges/${resultKey.replace(/\s/g, '-')}.png" alt="${badges[resultKey]}" class="badge-img">
+    ${starSVG}
+  </div>`;
 
       newResultText.textContent = `You got: ${resultKey}`;
     }
