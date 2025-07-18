@@ -3,89 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Magical Aesthetic Personality Quiz</title>
+  <title>Magical Aesthetic Quiz</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #e0d5f9, #f8d6ec);
-      color: #333;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      color: #fff;
+      padding: 2rem;
       text-align: center;
-      padding: 20px;
     }
-
     .quiz-container {
-      max-width: 600px;
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+      max-width: 700px;
       margin: auto;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(255, 192, 255, 0.5);
     }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-
     .question {
-      margin: 20px 0;
+      margin-bottom: 1.5rem;
     }
-
-    .answers button {
+    .question h3 {
+      font-size: 1.3rem;
+    }
+    label {
       display: block;
-      margin: 10px auto;
+      margin: 8px 0;
+    }
+    button {
+      background: #ffcafc;
+      color: #000;
       padding: 10px 20px;
-      background: #c5a8ff;
       border: none;
-      border-radius: 10px;
-      font-size: 1em;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .answers button:hover {
-      background: #9e7cff;
-    }
-
-    .result-badge {
-      margin-top: 20px;
-      background: white;
-      padding: 15px;
       border-radius: 15px;
-      display: inline-block;
-      box-shadow: 0 0 15px rgba(100, 100, 255, 0.3);
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 1rem;
     }
-
-    .result-badge img {
-      width: 100px;
-      display: block;
-      margin: auto;
+    .result-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2rem;
+      font-size: 1.3rem;
     }
-
-    .hidden {
-      display: none;
+    .result-image {
+      max-width: 150px;
+      border-radius: 10px;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="quiz-container">
-    <h1>✨ Magical Aesthetic Quiz ✨</h1>
-    <div id="quiz"></div>
-    <div id="result-section" class="hidden">
-      <div class="result-badge" id="badge-container"></div>
-      <p id="result-text"></p>
-    </div>
-  </div>
-
-  <script>
-    const quizContainer = document.getElementById('quiz');
-    const resultText = document.getElementById('result-text');
-    const badgeContainer = document.getElementById('badge-container');
-    const resultSection = document.getElementById('result-section');
-
-    const questions = [
-      {<!-- Question 1 -->
+    <h1>✨ Magical Aesthetic Personality Quiz ✨</h1>
+    <form id="quiz-form">
+      <!-- Question 1 -->
 <div class="question"><h3>1. When you wake up, what’s your dream aesthetic surrounding you?</h3>
   <label><input type="radio" name="q1" value="Moon Priestess"> Moonlit temple with flowing silks</label>
   <label><input type="radio" name="q1" value="Dreambound Dragon"> Floating castle in the clouds</label>
@@ -205,91 +179,90 @@
   <label><input type="radio" name="q15" value="Candlelight Phantom"> Taking long baths in candlelit silence</label>
 </div>
 
-    const results = {
-      "Moon Priestess": 0,
-      "Sugar Witch": 0,
-      "Candlelight Phantom": 0,
-      "Techno Fairy": 0,
-      "Dreambound Dragon": 0,
-      "Mystic Archivist": 0,
-      "Pastel Alchemist": 0,
-      "Twilight Kitsune": 0,
-      "Sea Oracle": 0,
-      "Star Druid": 0
-    };
+      <button type="button" onclick="showResults()">Reveal My Vibe</button>
+    </form>
 
-    const badges = {
-      "Moon Priestess": "MoonGoddess.png",
-      "Sugar Witch": "SugarWitch.png",
-      "Candlelight Phantom": "CandlelightPhantom.png",
-      "Techno Fairy": "TechnoFairy.png",
-      "Dreambound Dragon": "DreamlightDragon.png",
-      "Mystic Archivist": "MysticArchivist.png",
-      "Pastel Alchemist": "PastelAlchemist.png",
-      "Twilight Kitsune": "KitsuneFox.png",
-      "Sea Oracle": "SeaOracle.png",
-      "Star Druid": "StarDruid.png"
-    };
+    <div id="result-container">
+      <div id="badge-container"></div>
+      <p id="result-text"></p>
+      <img id="result-image" class="result-image" src="" alt="" />
+    </div>
+  </div>
 
-    let currentQuestionIndex = 0;
-    let answerCounts = {};
-
-    function showQuestion(index) {
-      const q = questions[index];
-      if (!q) {
-        showResults();
-        return;
-      }
-
-      quizContainer.innerHTML = `
-        <div class="question"><h2>${q.question}</h2></div>
-        <div class="answers">
-          ${q.answers.map((answer, i) => `
-            <button onclick="selectAnswer('${answer}')">${answer}</button>
-          `).join("")}
-        </div>
-      `;
-    }
-
-    function selectAnswer(answer) {
-      // You can add smarter logic later, for now, random boost
-      const keys = Object.keys(results);
-      const randKey = keys[Math.floor(Math.random() * keys.length)];
-      results[randKey] += 1;
-
-      currentQuestionIndex++;
-      showQuestion(currentQuestionIndex);
-    }
-
+  <script>
     function getResultKey() {
-      let top = null;
-      let topScore = -1;
-      for (const key in results) {
-        if (results[key] > topScore) {
-          topScore = results[key];
-          top = key;
+      const answers = {};
+      for (let i = 1; i <= 15; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) {
+          const val = selected.value;
+          answers[val] = (answers[val] || 0) + 1;
         }
       }
-      return top;
+
+      let max = 0;
+      let result = 'Moon Priestess';
+      for (const [key, count] of Object.entries(answers)) {
+        if (count > max) {
+          max = count;
+          result = key;
+        }
+      }
+      return result;
     }
 
     function showResults() {
-      quizContainer.classList.add('hidden');
-      resultSection.classList.remove('hidden');
+      const resultText = document.getElementById('result-text');
+      const badgeContainer = document.getElementById('badge-container');
+      const resultImage = document.getElementById('result-image');
+
       badgeContainer.innerHTML = '';
 
       const resultKey = getResultKey();
-      const imageFile = badges[resultKey];
+
+      const badges = {
+        "Moon Priestess": "🌙 Moon Priestess",
+        "Dreambound Dragon": "🐉 Dreambound Dragon",
+        "Sugar Witch": "🍬 Sugar Witch",
+        "Star Druid": "✨ Star Druid",
+        "Twilight Kitsune": "🦊 Twilight Kitsune",
+        "Sea Oracle": "🌊 Sea Oracle",
+        "Techno Fairy": "🧚 Techno Fairy",
+        "Mystic Archivist": "📚 Mystic Archivist",
+        "Pastel Alchemist": "⚗️ Pastel Alchemist",
+        "Candlelight Phantom": "🕯️ Candlelight Phantom"
+      };
+
+      const images = {
+        "Moon Priestess": "MoonGoddess.png",
+        "Dreambound Dragon": "DreamlightDragon.png",
+        "Sugar Witch": "SugarWitch.png",
+        "Star Druid": "StarDruid.png",
+        "Twilight Kitsune": "KitsuneFox.png",
+        "Sea Oracle": "SeaOracle.png",
+        "Techno Fairy": "TechnoFairy.png",
+        "Mystic Archivist": "MysticArchivist.png",
+        "Pastel Alchemist": "PastelAlchemist.png",
+        "Candlelight Phantom": "CandlelightPhantom.png"
+      };
+
+      const starSVG = `
+        <svg viewBox="0 0 24 24" width="24" fill="#fff">
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 
+          9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+        </svg>`;
 
       badgeContainer.innerHTML = `
-        <img src="${imageFile}" alt="${resultKey} Badge"/>
-        <p>${resultKey}</p>
-      `;
+        <div class="result-badge">
+          ${starSVG}
+          <span>${badges[resultKey]}</span>
+          ${starSVG}
+        </div>`;
 
       resultText.textContent = `You got: ${resultKey}`;
+      resultImage.src = images[resultKey];
+      resultImage.alt = resultKey + ' image';
     }
-
-    showQuestion(currentQuestionIndex);
   </script>
 </body>
 </html>
