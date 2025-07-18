@@ -286,61 +286,49 @@
     });
 
     function showResults() {
-      // Count results frequency
-      const tally = {};
-      answersChosen.forEach(res => {
-        tally[res] = (tally[res] || 0) + 1;
-      });
-      // Find max count
-      const maxCount = Math.max(...Object.values(tally));
-      // Get all with max count (in case of ties)
-      const winners = Object.keys(tally).filter(k => tally[k] === maxCount);
+  const resultText = document.getElementById('result-text');
+  const badgeContainer = document.getElementById('badge-container');
 
-      // Pick first winner for simplicity
-      const resultKey = winners[0];
+  // Clear previous badge
+  badgeContainer.innerHTML = '';
 
-      const resultText = document.getElementById('result-text');
-      const badgeContainer = document.getElementById('badge-container');
+  // Your logic to get result key
+  const resultKey = getResultKey(); // make sure this returns the correct result string
 
-      // Badge SVG star icon
-      const starSVG = `
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-        </svg>`;
+  // Sparkly star SVG
+  const starSVG = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="badge-star">
+      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+    </svg>`;
 
-      const badges = {
-        "Moon Priestess": "🌙 Moon Priestess",
-        "Dreambound Dragon": "🐉 Dreambound Dragon",
-        "Sugar Witch": "🍬 Sugar Witch",
-        "Star Druid": "✨ Star Druid",
-        "Twilight Kitsune": "🦊 Twilight Kitsune",
-        "Sea Oracle": "🌊 Sea Oracle",
-        "Techno Fairy": "🧚 Techno Fairy",
-        "Mystic Archivist": "📚 Mystic Archivist",
-        "Pastel Alchemist": "⚗️ Pastel Alchemist",
-        "Candlelight Phantom": "🕯️ Candlelight Phantom"
-      };
+  // Result name to image filename mapping
+  const badgeImages = {
+    "Moon Priestess": "MoonGoddess.png",
+    "Dreambound Dragon": "DreamlightDragon.png",
+    "Sugar Witch": "SugarWitch.png",
+    "Star Druid": "StarDruid.png",
+    "Twilight Kitsune": "KitsuneFox.png",
+    "Sea Oracle": "SeaOracle.png",
+    "Techno Fairy": "TechnoFairy.png",
+    "Mystic Archivist": "MysticArchivist.png",
+    "Pastel Alchemist": "PastelAlchemist.png",
+    "Candlelight Phantom": "CandlelightPhantom.png"
+  };
 
-      // Clear quiz container content except badge and result text
-      document.querySelector('.quiz-container').innerHTML = `
-        <h1>Your Magical Aesthetic</h1>
-        <div id="badge-container"></div>
-        <p id="result-text"></p>
-      `;
+  // Get the filename for the result
+  const badgeImage = badgeImages[resultKey];
 
-      // Reassign after reset
-      const newResultText = document.getElementById('result-text');
-      const newBadgeContainer = document.getElementById('badge-container');
+  // Inject image badge + stars
+  badgeContainer.innerHTML = `
+    <div class="result-badge">
+      ${starSVG}
+      <img src="badges/${badgeImage}" alt="${resultKey}" class="badge-img">
+      ${starSVG}
+    </div>`;
 
-      badgeContainer.innerHTML = `
-  <div class="result-badge">
-    ${starSVG}
-    <img src="badges/${resultKey.replace(/\s/g, '-')}.png" alt="${badges[resultKey]}" class="badge-img">
-    ${starSVG}
-  </div>`;
-
-      newResultText.textContent = `You got: ${resultKey}`;
-    }
+  // Show result name too
+  resultText.textContent = `You got: ${resultKey}`;
+}
 
     // Initial load
     loadQuestion();
