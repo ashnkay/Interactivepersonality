@@ -85,47 +85,125 @@
     const resultSection = document.getElementById('result-section');
 
     const questions = [
-      {
-        question: "Pick a color palette:",
-        answers: ["Lavender + Silver", "Blush + Gold", "Teal + Black", "Neon Pink + Blue"]
-      },
-      {
-        question: "Choose a magical item:",
-        answers: ["Crystal orb", "Potion bottle", "Ancient book", "Cyber wand"]
-      },
-      {
-        question: "What's your vibe?",
-        answers: ["Mysterious & calm", "Cute & sweet", "Dark & deep", "Chaotic & glittery"]
-      },
-      {
-        question: "Which pet would you have?",
-        answers: ["Fox spirit", "Baby dragon", "Floating jellyfish", "Talking raven"]
-      },
-      {
-        question: "Your ideal home is:",
-        answers: ["Moonlit temple", "Underwater cave", "Haunted library", "Dream cloud cottage"]
-      },
-      {
-        question: "Pick a hobby:",
-        answers: ["Astral projection", "Brewing tea", "Hacking magic code", "Doodling spells"]
-      },
-      {
-        question: "Pick a celestial body:",
-        answers: ["Full Moon", "Shooting Star", "Deep Sea", "Aurora"]
-      },
-      {
-        question: "What do people say about you?",
-        answers: ["Wise", "Adorable", "Unpredictable", "Creative"]
-      },
-      {
-        question: "Which sounds fun?",
-        answers: ["Potion brewing", "Star dancing", "Dream surfing", "Haunted exploring"]
-      },
-      {
-        question: "Choose your aesthetic:",
-        answers: ["Mooncore", "Kawaii witch", "Dark academia", "Cyber fae"]
-      }
-    ];
+      {<!-- Question 1 -->
+<div class="question"><h3>1. When you wake up, what’s your dream aesthetic surrounding you?</h3>
+  <label><input type="radio" name="q1" value="Moon Priestess"> Moonlit temple with flowing silks</label>
+  <label><input type="radio" name="q1" value="Dreambound Dragon"> Floating castle in the clouds</label>
+  <label><input type="radio" name="q1" value="Sugar Witch"> Candy forest with pastel skies</label>
+  <label><input type="radio" name="q1" value="Star Druid"> Forest glowing with stardust</label>
+</div>
+
+<!-- Question 2 -->
+<div class="question"><h3>2. What kind of magic do you vibe with most?</h3>
+  <label><input type="radio" name="q2" value="Mystic Archivist"> Knowledge that hums in forgotten books</label>
+  <label><input type="radio" name="q2" value="Pastel Alchemist"> Mixing colors and energies into potions</label>
+  <label><input type="radio" name="q2" value="Twilight Kitsune"> Illusions, shapeshifting, trickery</label>
+  <label><input type="radio" name="q2" value="Candlelight Phantom"> Ghost whispers and candlelit rituals</label>
+</div>
+
+<!-- Question 3 -->
+<div class="question"><h3>3. Choose a familiar to guide your path:</h3>
+  <label><input type="radio" name="q3" value="Twilight Kitsune"> A fox with glowing eyes and nine tails</label>
+  <label><input type="radio" name="q3" value="Sea Oracle"> A jellyfish that floats through dreams</label>
+  <label><input type="radio" name="q3" value="Dreambound Dragon"> A baby dragon curled in moonlight</label>
+  <label><input type="radio" name="q3" value="Techno Fairy"> A neon-winged sprite with LED freckles</label>
+</div>
+
+<!-- Question 4 -->
+<div class="question"><h3>4. What would your magical lair look like?</h3>
+  <label><input type="radio" name="q4" value="Candlelight Phantom"> An abandoned cathedral lit only by candles</label>
+  <label><input type="radio" name="q4" value="Pastel Alchemist"> A soft pink greenhouse full of glowing herbs</label>
+  <label><input type="radio" name="q4" value="Mystic Archivist"> A secret library where time stands still</label>
+  <label><input type="radio" name="q4" value="Star Druid"> A glade surrounded by ancient, whispering trees</label>
+</div>
+
+<!-- Question 5 -->
+<div class="question"><h3>5. Pick your enchanted accessory:</h3>
+  <label><input type="radio" name="q5" value="Techno Fairy"> A pulsing crystal headset that tunes into energy</label>
+  <label><input type="radio" name="q5" value="Moon Priestess"> A tiara forged from moonstone and dreams</label>
+  <label><input type="radio" name="q5" value="Sugar Witch"> A locket that smells like sugar and changes colors</label>
+  <label><input type="radio" name="q5" value="Sea Oracle"> A shell pendant that hums with ocean secrets</label>
+</div>
+
+<!-- Question 6 -->
+<div class="question"><h3>6. What emotion fuels your power?</h3>
+  <label><input type="radio" name="q6" value="Star Druid"> Wonder and awe at nature's beauty</label>
+  <label><input type="radio" name="q6" value="Moon Priestess"> Peace and quiet solitude</label>
+  <label><input type="radio" name="q6" value="Twilight Kitsune"> Curiosity and mischief</label>
+  <label><input type="radio" name="q6" value="Candlelight Phantom"> Melancholy and mystery</label>
+</div>
+
+<!-- Question 7 -->
+<div class="question"><h3>7. Which setting calls to your soul?</h3>
+  <label><input type="radio" name="q7" value="Sea Oracle"> An endless underwater city glowing with orbs</label>
+  <label><input type="radio" name="q7" value="Dreambound Dragon"> A floating realm where gravity bends at will</label>
+  <label><input type="radio" name="q7" value="Pastel Alchemist"> A cottage wrapped in vines and spell jars</label>
+  <label><input type="radio" name="q7" value="Sugar Witch"> A magical carnival with floating treats</label>
+</div>
+
+<!-- Question 8 -->
+<div class="question"><h3>8. How do you handle conflict?</h3>
+  <label><input type="radio" name="q8" value="Mystic Archivist"> Research the ancient ways before acting</label>
+  <label><input type="radio" name="q8" value="Moon Priestess"> Disengage and meditate under the stars</label>
+  <label><input type="radio" name="q8" value="Techno Fairy"> Hack the problem, hard and fast</label>
+  <label><input type="radio" name="q8" value="Twilight Kitsune"> Confuse the enemy with illusions</label>
+</div>
+
+<!-- Question 9 -->
+<div class="question"><h3>9. What type of dreams do you have most?</h3>
+  <label><input type="radio" name="q9" value="Candlelight Phantom"> Wandering dark corridors in candlelight</label>
+  <label><input type="radio" name="q9" value="Dreambound Dragon"> Flying above cities with glowing wings</label>
+  <label><input type="radio" name="q9" value="Sea Oracle"> Swimming effortlessly in starlit water</label>
+  <label><input type="radio" name="q9" value="Sugar Witch"> Dancing in endless candy-colored fields</label>
+</div>
+
+<!-- Question 10 -->
+<div class="question"><h3>10. What scent follows you like a signature?</h3>
+  <label><input type="radio" name="q10" value="Sugar Witch"> Fresh-baked cupcakes with fairy dust</label>
+  <label><input type="radio" name="q10" value="Candlelight Phantom"> Smoke, myrrh, and something ancient</label>
+  <label><input type="radio" name="q10" value="Pastel Alchemist"> Lavender, ink, and citrus magic</label>
+  <label><input type="radio" name="q10" value="Sea Oracle"> Salt, seafoam, and morning fog</label>
+</div>
+
+<!-- Question 11 -->
+<div class="question"><h3>11. Choose a magical soundscape:</h3>
+  <label><input type="radio" name="q11" value="Techno Fairy"> Pulsing synths with a fairy’s laughter</label>
+  <label><input type="radio" name="q11" value="Moon Priestess"> Echoes of crystal chimes in the breeze</label>
+  <label><input type="radio" name="q11" value="Mystic Archivist"> The quiet scratch of a quill on parchment</label>
+  <label><input type="radio" name="q11" value="Star Druid"> Distant starsong and rustling leaves</label>
+</div>
+
+<!-- Question 12 -->
+<div class="question"><h3>12. How would your magic affect others?</h3>
+  <label><input type="radio" name="q12" value="Sea Oracle"> Calm storms in people’s hearts</label>
+  <label><input type="radio" name="q12" value="Twilight Kitsune"> Make them see what isn’t really there</label>
+  <label><input type="radio" name="q12" value="Mystic Archivist"> Make them curious to seek truth</label>
+  <label><input type="radio" name="q12" value="Sugar Witch"> Make them feel light and playful</label>
+</div>
+
+<!-- Question 13 -->
+<div class="question"><h3>13. What would your wand look like?</h3>
+  <label><input type="radio" name="q13" value="Pastel Alchemist"> Spiral glass filled with swirling colors</label>
+  <label><input type="radio" name="q13" value="Dreambound Dragon"> Carved crystal with wings at the hilt</label>
+  <label><input type="radio" name="q13" value="Moon Priestess"> Crescent-topped wand with moon runes</label>
+  <label><input type="radio" name="q13" value="Candlelight Phantom"> Bone-white with a flickering ember</label>
+</div>
+
+<!-- Question 14 -->
+<div class="question"><h3>14. What makes your energy irresistible?</h3>
+  <label><input type="radio" name="q14" value="Techno Fairy"> High-energy spark that draws everyone in</label>
+  <label><input type="radio" name="q14" value="Twilight Kitsune"> Mysterious and a little dangerous</label>
+  <label><input type="radio" name="q14" value="Moon Priestess"> Soft and wise, like you've lived a thousand lives</label>
+  <label><input type="radio" name="q14" value="Sea Oracle"> Quietly enchanting like a tide drawing near</label>
+</div>
+
+<!-- Question 15 -->
+<div class="question"><h3>15. How do you recharge your magic?</h3>
+  <label><input type="radio" name="q15" value="Star Druid"> Stargazing under the constellations</label>
+  <label><input type="radio" name="q15" value="Mystic Archivist"> Journaling and reading old spells</label>
+  <label><input type="radio" name="q15" value="Sugar Witch"> Bingeing cute shows with hot cocoa</label>
+  <label><input type="radio" name="q15" value="Candlelight Phantom"> Taking long baths in candlelit silence</label>
+</div>
 
     const results = {
       "Moon Priestess": 0,
